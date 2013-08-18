@@ -56,12 +56,30 @@ app.post('/', function (req, res) {
 // curl -X DELETE localhost:9090/1
 app.delete('/:id', function (req, res) {
 	// you can access the :id through req.params.id
+	task.destroy(req.params.id, function (err, result) {
+		if (err) {
+			res.statusCode = 505;
+			res.end('Something went wrong.');
+		}
 
+		res.send(result + '\n');
+	})
 });
 
 // curl -X PUT -d "entry=Javascript is awesome" localhost:9090/0
 app.put('/:id', function (req, res) {
+	var object = {};
+	object._id = req.params.id;
+	object.entry = req.body.entry;
 
+	task.update(object, function (err, result) {
+		if (err) {
+			res.statusCode = 505;
+			res.end('Something went wrong.');
+		}
+
+		res.send(result + '\n');
+	})
 });
 
 app.listen(9090, function () {
