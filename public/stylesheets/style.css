@@ -1,0 +1,15 @@
+body {
+  padding: 0;
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: whitesmoke;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#mainContainer {
+	margin: 50px auto;
+	width: 60%;
+}
